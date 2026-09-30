@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TapReview — Google მიმოხილვების ბარათები ბიზნესისთვის</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=BPG+Banner+GEL:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'BPG Banner GEL', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        google: {
+                            blue: '#4285F4',
+                            red: '#EA4335',
+                            yellow: '#FBBC05',
+                            green: '#34A853'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', 'BPG Banner GEL', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.3);
+        }
+        .card-glow {
+            box-shadow: 0 20px 40px -15px rgba(66, 133, 244, 0.4);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="bg-[#090d16] text-gray-100 antialiased selection:bg-brand-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#090d16]/80 backdrop-blur-md border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-google-blue via-google-red to-google-yellow p-[2px] flex items-center justify-center shadow-lg">
+                    <div class="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center font-bold text-white text-lg">
+                        TR
+                    </div>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight text-white">Tap<span class="text-google-blue">Review</span></span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#features" class="hover:text-google-blue transition">უპირატესობები</a>
+                <a href="#howitworks" class="hover:text-google-blue transition">როგორ მუშაობს</a>
+                <a href="#pricing" class="hover:text-google-blue transition">ფასები</a>
+                <a href="#calculator" class="hover:text-google-blue transition">კალკულატორი</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="#order" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-google-blue to-brand-600 hover:from-blue-600 hover:to-brand-700 shadow-lg shadow-blue-500/25 transition transform hover:-translate-y-0.5">
+                    შეკვეთა
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#0e1526] border-b border-gray-800 px-4 pt-2 pb-4 space-y-3">
+            <a href="#features" class="block py-2 text-gray-300 hover:text-white">უპირატესობები</a>
+            <a href="#howitworks" class="block py-2 text-gray-300 hover:text-white">როგორ მუშაობს</a>
+            <a href="#pricing" class="block py-2 text-gray-300 hover:text-white">ფასები</a>
+            <a href="#calculator" class="block py-2 text-gray-300 hover:text-white">კალკულატორი</a>
+            <a href="#order" class="block text-center w-full py-3 rounded-xl font-semibold text-white bg-google-blue">შეკვეთა</a>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Background glowing blobs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-google-blue/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-brand-600/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-google-blue animate-pulse"></span>
+                        <span>ახალი თაობის NFC ბარათები საქართველოს ბიზნესებისთვის</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        მიიღეთ მეტი <span class="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-google-yellow to-google-red">Google შეფასება</span> ერთი შეხებით
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-normal">
+                        გაზარდეთ თქვენი კაფეს, სალონის ან სასტუმროს რეიტინგი მყისიერად. მომხმარებელს აღარ სჭირდება QR კოდის ძებნა — უბრალოდ მიადებტ ტელეფონს ბარათს და Google-ის შეფასების ფანჯარა ავტომატურად იხსნება.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+                        <a href="#order" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-google-blue to-brand-600 hover:from-blue-600 hover:to-brand-700 shadow-xl shadow-blue-500/25 transition transform hover:-translate-y-0.5 text-center">
+                            შეკვეთა ახლავე
+                        </a>
+                        <a href="#howitworks" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-gray-300 bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700 transition text-center">
+                            როგორ მუშაობს?
+                        </a>
+                    </div>
+
+                    <div class="pt-6 flex items-center justify-center lg:justify-start space-x-8 text-sm text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>მუშაობს iPhone & Android-ზე</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>არ სჭირდება აპლიკაცია</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Card Mockup Preview -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm aspect-[1.58/1] rounded-2xl bg-gradient-to-br from-gray-900 via-[#131b2e] to-[#1a233a] border border-gray-700/80 card-glow p-6 flex flex-col justify-between transform hover:scale-[1.02] transition duration-500">
+                        <!-- Card Header -->
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 rounded-lg bg-google-blue/20 flex items-center justify-center text-google-blue">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 s-10zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                                </div>
+                                <span class="text-xs font-bold tracking-wider text-gray-400 uppercase">TapReview Card</span>
+                            </div>
+                            <!-- NFC Wave Icon -->
+                            <svg class="w-7 h-7 text-google-blue animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.111 16.404a5.5 5.5 0 010-7.778M12 20a10 10 0 000-16M5.293 19.222a9 9 0 010-12.444M14.888 13.596a2 2 0 000-2.828"></path></svg>
+                        </div>
+
+                        <!-- Card Body / Center -->
+                        <div class="text-center my-auto">
+                            <p class="text-sm text-gray-400 mb-1">შეაფასეთ ჩვენი სერვისი</p>
+                            <h3 class="text-xl font-bold text-white tracking-wide">შეეხეთ ტელეფონით</h3>
+                            <div class="flex justify-center space-x-1 mt-2 text-google-yellow">
+                                ★★★★★
+                            </div>
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="flex justify-between items-end border-t border-gray-800 pt-3">
+                            <span class="text-xs font-semibold text-gray-400">თქვენი ბიზნესი აქ</span>
+                            <!-- Simulated QR -->
+                            <div class="w-8 h-8 bg-white/10 rounded flex items-center justify-center p-1">
+                                <svg class="w-full h-full text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zM13 15h2v2h-2v-2zm3 0h2v3h-2v-3zm3 3h2v3h-2v-3zm-6 0h3v3h-3v-3zm3-6h2v3h-2v-3z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 border-y border-gray-800/80 bg-[#0e1526]/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">5x-ით</div>
+                    <p class="text-sm text-gray-400">მეტი Google შეფასება</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-google-blue">3 წამში</div>
+                    <p class="text-sm text-gray-400">შეფასების დატოვება</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-google-green">100%</div>
+                    <p class="text-sm text-gray-400">თავსებადობა ტელეფონებთან</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-google-yellow">4.9★</div>
+                    <p class="text-sm text-gray-400">ადგილობრივი ბიზნესების რეიტინგი</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-google-blue font-bold">უპირატესობები</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">რატომ ირჩევენ ბიზნესები TapReview-ს?</h3>
+                <p class="text-gray-400">ტრადიციული ქაღალდის ფლაერები და რთული QR კოდები წარსულს ჩაბარდა. დროა გადახვიდეთ თანამედროვე ტექნოლოგიაზე.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl bg-gray-900/60 border border-gray-800 hover:border-google-blue/50 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-google-blue/10 flex items-center justify-center text-google-blue mb-6 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">მყისიერი Tap & Review</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        არანაირი აპლიკაციის გადმოწერა. მომხმარებელი უბრალოდ მიადებს სმარტფონს ბარათს და მზა Google Review ფანჯარა იხსნება.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-gray-900/60 border border-gray-800 hover:border-google-blue/50 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-google-green/10 flex items-center justify-center text-google-green mb-6 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">პრემიუმ ხარისხი & პერსონალიზაცია</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        დამზადებულია მყარი, წყალგაუმტარი PVC მასალისგან თქვენი ბრენდის ლოგოთი და დიზაინით. გამოიყურება როგორც ძვირადღირებული საბანკო ბარათი.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-gray-900/60 border border-gray-800 hover:border-google-blue/50 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-google-yellow/10 flex items-center justify-center text-google-yellow mb-6 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">უნივერსალური თავსებადობა</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        სრულყოფილად მუშაობს ყველა თანამედროვე Android და iPhone (iOS) მოწყობილობასთან NFC ტექნოლოგიისა და QR კოდის სარეზერვო ვარიანტის წყალობით.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="howitworks" class="py-24 bg-[#0e1526]/40 border-y border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-google-blue font-bold">პროცესი</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">როგორ მუშაობს TapReview?</h3>
+                <p class="text-gray-400">სულ 3 მარტივი ნაბიჯი მეტი შეფასებისა და მომხმარებლის მოსაზიდად.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="relative p-8 rounded-2xl bg-[#090d16] border border-gray-800">
+                    <div class="absolute -top-4 left-8 w-10 h-10 rounded-xl bg-google-blue text-white font-bold flex items-center justify-center shadow-lg">1</div>
+                    <h4 class="text-xl font-bold text-white mt-4 mb-2">დადეთ მაგიდაზე ან დახლზე</h4>
+                    <p class="text-gray-400 text-sm">
+                        განათავსეთ ბარათი თქვენი კაფეს მაგიდაზე, სილამაზის სალონის მიმღებში ან სასტუმროს რეცეფშენზე სადაც მომხმარებლის თვალშია.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative p-8 rounded-2xl bg-[#090d16] border border-gray-800">
+                    <div class="absolute -top-4 left-8 w-10 h-10 rounded-xl bg-google-yellow text-gray-900 font-bold flex items-center justify-center shadow-lg">2</div>
+                    <h4 class="text-xl font-bold text-white mt-4 mb-2">მომხმარებელი აჭერს ტელეფონს</h4>
+                    <p class="text-gray-400 text-sm">
+                        კლიენტი აახლოებს თავის სმარტფონს ბარათთან (NFC) ან სკანირებს QR კოდს კამერით.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative p-8 rounded-2xl bg-[#090d16] border border-gray-800">
+                    <div class="absolute -top-4 left-8 w-10 h-10 rounded-xl bg-google-green text-white font-bold flex items-center justify-center shadow-lg">3</div>
+                    <h4 class="text-xl font-bold text-white mt-4 mb-2">ტოვებს 5-ვარსკვლავიან შეფასებას</h4>
+                    <p class="text-gray-400 text-sm">
+                        ეკრანზე პირდაპირ იხსნება თქვენი Google Business გვერდი სადაც მარტივად წერს მიმოხილვას.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-24 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-gradient-to-br from-gray-900 via-[#11192d] to-gray-900 rounded-3xl border border-gray-800 p-8 sm:p-12 shadow-2xl">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                    <h2 class="text-xs uppercase tracking-widest text-google-blue font-bold">ფასების კალკულატორი</h2>
+                    <h3 class="text-3xl font-extrabold text-white">აირჩიეთ თქვენი ბიზნესისთვის საჭირო რაოდენობა</h3>
+                    <p class="text-gray-400 text-sm">რაც მეტ ბარათს შეუკვეთავთ, მით უფრო მომგებიანია ერთეულის ფასი.</p>
+                </div>
+
+                <!-- Calculator Controls -->
+                <div class="space-y-8 max-w-xl mx-auto">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <label class="text-sm font-semibold text-gray-300">ბარათების რაოდენობა:</label>
+                            <span id="qtyDisplay" class="text-2xl font-black text-google-blue">5 ცალი</span>
+                        </div>
+                        <input type="range" id="qtyRange" min="1" max="50" value="5" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-google-blue">
+                        <div class="flex justify-between text-xs text-gray-500 mt-2">
+                            <span>1 ცალი (ინდივიდუალური)</span>
+                            <span>10 ცალი (პაკეტი)</span>
+                            <span>50 ცალი (ქსელისთვის)</span>
+                        </div>
+                    </div>
+
+                    <!-- Price Box -->
+                    <div class="bg-[#090d16] rounded-2xl p-6 border border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block mb-1">ჯამური ღირებულება:</span>
+                            <div class="flex items-baseline space-x-2">
+                                <span id="totalPrice" class="text-4xl font-extrabold text-white">199 ₾</span>
+                                <span class="text-xs text-google-green font-medium">უფასო პროგრამირებით & მიტანით</span>
+                            </div>
+                        </div>
+                        <a href="#order" onclick="setPackageFromCalculator()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-white bg-google-blue hover:bg-blue-600 transition shadow-lg shadow-blue-500/25 text-center">
+                            ამ პაკეტის შეკვეთა
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-[#0e1526]/40 border-y border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-google-blue font-bold">ტარიფები</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">გამჭვირვალე ფასები ფარული გადასახადების გარეშე</h3>
+                <p class="text-gray-400">ერთჯერადი გადახდა. არანაირი ყოველთვიური საკომისიო.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan 1 -->
+                <div class="bg-gray-900/60 rounded-3xl border border-gray-800 p-8 flex flex-col justify-between hover:border-gray-700 transition">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs font-semibold mb-4">დამწყები</div>
+                        <h4 class="text-xl font-bold text-white mb-2">1 ბარათი</h4>
+                        <p class="text-gray-400 text-sm mb-6">იდეალურია მცირე კაფესთვის ან ერთი ლოკაციისთვის.</p>
+                        <div class="text-4xl font-extrabold text-white mb-6">49 ₾</div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>1 ცალი PVC ბარათი</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>უფასო NFC პროგრამირება</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>თქვენი ლოგოს დიზაინი</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPlan(1, 49)" class="w-full py-3 rounded-xl font-semibold text-white bg-gray-800 hover:bg-gray-700 transition">არჩევა</button>
+                </div>
+
+                <!-- Plan 2 (Popular) -->
+                <div class="bg-gradient-to-b from-[#131b2e] to-gray-900 rounded-3xl border-2 border-google-blue p-8 flex flex-col justify-between relative shadow-2xl shadow-blue-500/10">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-google-blue text-white text-xs font-bold uppercase tracking-wider shadow">ყველაზე პოპულარული</div>
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-google-blue text-xs font-semibold mb-4">ბიზნესი</div>
+                        <h4 class="text-xl font-bold text-white mb-2">5 ბარათიანი პაკეტი</h4>
+                        <p class="text-gray-400 text-sm mb-6">საუკეთესოა სალონებისთვის, რესტორნებისა და სასტუმროებისთვის.</p>
+                        <div class="text-4xl font-extrabold text-white mb-6">199 ₾ <span class="text-sm font-normal text-gray-400 line-through">245 ₾</span></div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>5 ცალი პრემიუმ ბარათი</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>უფასო NFC პროგრამირება</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>ინდივიდუალური დიზაინი</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>უფასო მიტანა საქართველოს მასშტაბით</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPlan(5, 199)" class="w-full py-3.5 rounded-xl font-bold text-white bg-google-blue hover:bg-blue-600 transition shadow-lg shadow-blue-500/25">არჩევა</button>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="bg-gray-900/60 rounded-3xl border border-gray-800 p-8 flex flex-col justify-between hover:border-gray-700 transition">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs font-semibold mb-4">ქსელური</div>
+                        <h4 class="text-xl font-bold text-white mb-2">10 ბარათიანი პაკეტი</h4>
+                        <p class="text-gray-400 text-sm mb-6">იდეალურია ფილიალების ქსელისა და დიდი ობიექტებისთვის.</p>
+                        <div class="text-4xl font-extrabold text-white mb-6">349 ₾ <span class="text-sm font-normal text-gray-400 line-through">490 ₾</span></div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>10 ცალი პრემიუმ ბარათი</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>უფასო NFC პროგრამირება</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>პერსონალური მხარდაჭერა</span></li>
+                            <li class="flex items-center space-x-3"><svg class="w-5 h-5 text-google-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>უფასო მიტანა საქართველოს მასშტაბით</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPlan(10, 349)" class="w-full py-3 rounded-xl font-semibold text-white bg-gray-800 hover:bg-gray-700 transition">არჩევა</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-900 rounded-3xl border border-gray-800 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-google-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
+                    <h2 class="text-xs uppercase tracking-widest text-google-blue font-bold">შეკვეთა</h2>
+                    <h3 class="text-3xl font-extrabold text-white">შეუკვეთეთ TapReview ბარათები</h3>
+                    <p class="text-gray-400 text-sm">შეავსეთ მარტივი ფორმა და ჩვენი მენეჯერი დაგიკავშირდებათ დეტალების დასაზუსტებლად.</p>
+                </div>
+
+                <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">თქვენი სახელი / კომპანია *</label>
+                            <input type="text" id="nameInput" required class="w-full bg-[#090d16] border border-gray-800 rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-google-blue transition" placeholder="მაგ: კაფე რეტრო">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">ტელეფონის ნომერი *</label>
+                            <input type="tel" id="phoneInput" required class="w-full bg-[#090d16] border border-gray-800 rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-google-blue transition" placeholder="+995 5XX XX XX XX">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Google Business-ის ლინკი (ან სახელი)</label>
+                            <input type="text" id="googleLink" class="w-full bg-[#090d16] border border-gray-800 rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-google-blue transition" placeholder="გూგლ რუკის ლინკი">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">რაოდენობა</label>
+                            <select id="formQty" class="w-full bg-[#090d16] border border-gray-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-google-blue transition">
+                                <option value="1">1 ბარათი (49 ₾)</option>
+                                <option value="5" selected>5 ბარათიანი პაკეტი (199 ₾)</option>
+                                <option value="10">10 ბარათიანი პაკეტი (349 ₾)</option>
+                                <option value="20">20 ბარათიანი პაკეტი (649 ₾)</option>
+                                <option value="50">50 ბარათიანი პაკეტი (1,499 ₾)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">მისამართი მიტანისთვის</label>
+                        <textarea id="addressInput" rows="2" class="w-full bg-[#090d16] border border-gray-800 rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-google-blue transition" placeholder="ქალაქი, ქუჩა, ნომერი"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-google-blue to-brand-600 hover:from-blue-600 hover:to-brand-700 shadow-xl shadow-blue-500/25 transition transform hover:-translate-y-0.5">
+                        შეკვეთის გაფორმება
+                    </button>
+                </form>
+
+                <!-- Success Message Box -->
+                <div id="successMessage" class="hidden mt-6 p-6 rounded-2xl bg-green-500/10 border border-green-500/30 text-center space-y-2">
+                    <svg class="w-12 h-12 text-google-green mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h4 class="text-xl font-bold text-white">შეკვეთა წარმატებით მიღებულია!</h4>
+                    <p class="text-gray-300 text-sm">მადლობა! ჩვენი წარმომადგენელი უახლოეს წუთებში დაგიკავშირდებათ დეტალების დასაზუსტებლად.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#05080e] border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-google-blue to-brand-600 flex items-center justify-center font-bold text-white text-sm">
+                    TR
+                </div>
+                <span class="text-lg font-bold text-white">TapReview Georgia</span>
+            </div>
+            <p class="text-sm text-gray-500 text-center">
+                &copy; 2026 TapReview. ყველა უფლება დაცულია. შექმნილია ქართული ბიზნესების წარმატებისთვის.
+            </p>
+            <div class="flex space-x-6 text-sm text-gray-400">
+                <a href="#" class="hover:text-white transition">კონფიდენციალურობა</a>
+                <a href="#" class="hover:text-white transition">პირობები</a>
+                <a href="#order" class="hover:text-white transition">კონტაქტი</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Price Calculator Logic
+        const qtyRange = document.getElementById('qtyRange');
+        const qtyDisplay = document.getElementById('qtyDisplay');
+        const totalPrice = document.getElementById('totalPrice');
+
+        function calculatePrice(qty) {
+            let pricePerCard = 49;
+            if (qty >= 5 && qty < 10) pricePerCard = 39;
+            else if (qty >= 10 && qty < 20) pricePerCard = 35;
+            else if (qty >= 20) pricePerCard = 29;
+
+            return qty * pricePerCard;
+        }
+
+        qtyRange.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            qtyDisplay.textContent = val + (val === 1 ? ' ცალი' : ' ცალი');
+            const total = calculatePrice(val);
+            totalPrice.textContent = total + ' ₾';
+        });
+
+        function setPackageFromCalculator() {
+            const val = qtyRange.value;
+            const select = document.getElementById('formQty');
+            // find closest option
+            for (let opt of select.options) {
+                if (parseInt(opt.value) >= parseInt(val)) {
+                    opt.selected = true;
+                    break;
+                }
+            }
+        }
+
+        function selectPlan(qty, price) {
+            const select = document.getElementById('formQty');
+            for (let opt of select.options) {
+                if (parseInt(opt.value) === qty) {
+                    opt.selected = true;
+                    break;
+                }
+            }
+            window.location.href = '#order';
+        }
+
+        // Handle Order Form Submission
+        function handleOrder(e) {
+            e.preventDefault();
+            const form = document.getElementById('orderForm');
+            const successMsg = document.getElementById('successMessage');
+            
+            form.style.display = 'none';
+            successMsg.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
